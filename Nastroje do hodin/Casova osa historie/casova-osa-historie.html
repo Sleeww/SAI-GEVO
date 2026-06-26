@@ -14,12 +14,10 @@
       --green: #0f7a5f;
       --blue: #1f5f9f;
       --gold: #c58a16;
-      --rose: #b44b61;
+      --danger: #b63f4c;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -30,13 +28,11 @@
 
     header,
     main {
-      width: min(1160px, calc(100% - 32px));
+      width: min(1080px, calc(100% - 32px));
       margin: 0 auto;
     }
 
-    header {
-      padding: 28px 0 20px;
-    }
+    header { padding: 28px 0 20px; }
 
     a {
       color: var(--green);
@@ -56,14 +52,7 @@
       line-height: 1.6;
     }
 
-    .workspace {
-      display: grid;
-      grid-template-columns: 300px 1fr;
-      gap: 18px;
-      padding-bottom: 32px;
-    }
-
-    .panel,
+    .toolbar,
     .timeline,
     .export-box {
       border: 1px solid var(--line);
@@ -71,44 +60,23 @@
       background: var(--panel);
     }
 
-    .panel {
-      padding: 18px;
-      align-self: start;
-      position: sticky;
-      top: 16px;
+    .toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding: 14px;
     }
 
-    label {
-      display: block;
-      margin: 14px 0 7px;
-      font-weight: 800;
-    }
-
-    select,
-    input,
-    textarea {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 6px;
-      padding: 10px 12px;
-      color: var(--ink);
-      background: #fff;
-      font: inherit;
-    }
-
-    textarea {
-      min-height: 92px;
-      resize: vertical;
-    }
-
-    .range-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
+    .toolbar-group {
+      display: flex;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     button {
-      min-height: 42px;
+      min-height: 40px;
       border: 0;
       border-radius: 6px;
       padding: 0 14px;
@@ -119,17 +87,15 @@
       cursor: pointer;
     }
 
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+    }
+
     .secondary {
       color: var(--ink);
       border: 1px solid var(--line);
       background: #fff;
-    }
-
-    .panel-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 16px;
     }
 
     .timeline {
@@ -170,9 +136,9 @@
 
     .event {
       display: grid;
-      grid-template-columns: 120px 1fr;
+      grid-template-columns: 120px 1fr 44px;
       gap: 18px;
-      padding: 0 0 24px;
+      padding: 0 0 14px;
       position: relative;
     }
 
@@ -180,17 +146,16 @@
       content: "";
       position: absolute;
       left: 133px;
-      top: 14px;
-      bottom: -12px;
+      top: 50%;
+      bottom: -34px;
       width: 3px;
       background: var(--line);
     }
 
-    .event:last-child::before {
-      display: none;
-    }
+    .event:last-of-type::before { display: none; }
 
     .year-field {
+      align-self: center;
       font-weight: 900;
       color: var(--blue);
     }
@@ -207,20 +172,24 @@
       content: "";
       position: absolute;
       left: -29px;
-      top: 14px;
+      top: 50%;
       width: 14px;
       height: 14px;
       border: 3px solid #fff;
       border-radius: 50%;
       background: var(--gold);
       box-shadow: 0 0 0 2px var(--gold);
+      transform: translateY(-50%);
     }
 
     .editable {
+      width: 100%;
       border: 1px solid transparent;
       border-radius: 6px;
       padding: 7px 8px;
+      color: var(--ink);
       background: transparent;
+      font: inherit;
     }
 
     .editable:focus {
@@ -236,9 +205,10 @@
     }
 
     .event-note {
+      min-height: 72px;
       color: var(--muted);
       line-height: 1.5;
-      min-height: 44px;
+      resize: vertical;
     }
 
     .event-meta {
@@ -254,8 +224,43 @@
       border-color: #ead58b;
     }
 
+    .event-actions {
+      align-self: center;
+      display: grid;
+      gap: 8px;
+    }
+
+    .icon-button,
+    .insert-button {
+      width: 40px;
+      min-height: 40px;
+      padding: 0;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 1.25rem;
+      line-height: 1;
+    }
+
+    .delete-button { background: var(--danger); }
+
+    .insert-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 44px;
+      gap: 18px;
+      padding: 0 0 14px;
+    }
+
+    .insert-button {
+      grid-column: 2;
+      justify-self: start;
+      color: var(--ink);
+      border: 1px dashed var(--line);
+      background: #fff;
+    }
+
     .export-box {
-      grid-column: 1 / -1;
+      margin: 18px 0 32px;
       padding: 18px;
     }
 
@@ -266,42 +271,34 @@
       color: #2d383f;
     }
 
-    @media (max-width: 860px) {
-      .workspace {
-        grid-template-columns: 1fr;
-      }
-
-      .panel {
-        position: static;
-      }
-
-      .event {
-        grid-template-columns: 86px 1fr;
-      }
-
-      .event::before {
-        left: 99px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .timeline {
-        padding: 16px;
-      }
-
+    @media (max-width: 760px) {
+      .toolbar,
       .timeline-heading {
         align-items: flex-start;
         flex-direction: column;
       }
 
-      .event {
-        grid-template-columns: 1fr;
-        gap: 8px;
+      .event,
+      .insert-row {
+        grid-template-columns: 86px 1fr 44px;
       }
 
+      .event::before { left: 99px; }
+    }
+
+    @media (max-width: 560px) {
+      .timeline { padding: 16px; }
+
+      .event { grid-template-columns: 1fr 44px; }
+
+      .year-field { grid-column: 1 / -1; }
+
       .event::before,
-      .event-card::before {
-        display: none;
+      .event-card::before { display: none; }
+
+      .insert-row {
+        display: flex;
+        padding-left: 0;
       }
     }
   </style>
@@ -310,34 +307,19 @@
   <header>
     <a href="../../Landing page/Knihovna nastroju/index.html">← Knihovna nástrojů</a>
     <h1>Interaktivní časová osa</h1>
-    <p>Vyber téma a doplň nebo uprav údaje přímo v časové ose. Některá pole jsou záměrně prázdná nebo obecná.</p>
+    <p>Upravuj roky, názvy a popisy přímo v časové ose. Tlačítka plus vkládají novou událost mezi existující body.</p>
   </header>
 
-  <main class="workspace">
-    <aside class="panel" aria-label="Filtry časové osy">
-      <label for="timeline-select">Téma</label>
-      <select id="timeline-select"></select>
-
-      <label for="category-select">Kategorie</label>
-      <select id="category-select">
-        <option value="all">Všechny kategorie</option>
-      </select>
-
-      <div class="range-grid">
-        <div>
-          <label for="year-from">Od roku</label>
-          <input id="year-from" type="number" inputmode="numeric">
-        </div>
-        <div>
-          <label for="year-to">Do roku</label>
-          <input id="year-to" type="number" inputmode="numeric">
-        </div>
+  <main>
+    <section class="toolbar" aria-label="Ovládání časové osy">
+      <div class="toolbar-group">
+        <button class="secondary" type="button" id="undo-button">Zpět</button>
+        <button class="secondary" type="button" id="redo-button">Znovu</button>
       </div>
-
-      <div class="panel-actions">
-        <button class="secondary" type="button" id="reset-fields">Obnovit téma</button>
+      <div class="toolbar-group">
+        <button class="secondary" type="button" id="reset-fields">Obnovit časovou osu</button>
       </div>
-    </aside>
+    </section>
 
     <section class="timeline" id="timeline" aria-label="Časová osa"></section>
 
@@ -414,20 +396,37 @@
       }
     ];
 
-    const timelineSelect = document.querySelector("#timeline-select");
-    const categorySelect = document.querySelector("#category-select");
-    const yearFrom = document.querySelector("#year-from");
-    const yearTo = document.querySelector("#year-to");
+    const params = new URLSearchParams(window.location.search);
+    const timelineId = params.get("timeline") || timelines[0].id;
+    const selectedTimeline = timelines.find((item) => item.id === timelineId) || timelines[0];
     const timeline = document.querySelector("#timeline");
     const exportText = document.querySelector("#export-text");
     const copyButton = document.querySelector("#copy-export");
     const resetButton = document.querySelector("#reset-fields");
+    const undoButton = document.querySelector("#undo-button");
+    const redoButton = document.querySelector("#redo-button");
 
-    let activeTimelineId = timelines[0].id;
-    let workingEvents = cloneEvents(timelines[0].events);
+    let workingEvents = cloneEvents(selectedTimeline.events);
+    let undoStack = [];
+    let redoStack = [];
 
     function cloneEvents(events) {
       return events.map((event) => ({ ...event }));
+    }
+
+    function snapshot() {
+      return cloneEvents(workingEvents);
+    }
+
+    function restore(events) {
+      workingEvents = cloneEvents(events);
+      render();
+    }
+
+    function recordHistory() {
+      undoStack.push(snapshot());
+      redoStack = [];
+      updateHistoryButtons();
     }
 
     function yearNumber(value) {
@@ -435,98 +434,114 @@
       return match ? Number(match[0]) : Number.NaN;
     }
 
-    function populateSelects() {
-      timelines.forEach((item) => {
-        const option = document.createElement("option");
-        option.value = item.id;
-        option.textContent = item.title;
-        timelineSelect.append(option);
-      });
-
-      const categories = [...new Set(timelines.flatMap((item) => item.events.map((event) => event.category)))].sort((a, b) => a.localeCompare(b, "cs"));
-      categories.forEach((category) => {
-        const option = document.createElement("option");
-        option.value = category;
-        option.textContent = category;
-        categorySelect.append(option);
-      });
-    }
-
-    function activeTimeline() {
-      return timelines.find((item) => item.id === activeTimelineId);
-    }
-
-    function filteredEvents() {
-      const from = yearFrom.value ? Number(yearFrom.value) : -Infinity;
-      const to = yearTo.value ? Number(yearTo.value) : Infinity;
-      const category = categorySelect.value;
-
-      return workingEvents.filter((event) => {
-        const numericYear = yearNumber(event.year);
-        const matchesYear = Number.isNaN(numericYear) || (numericYear >= from && numericYear <= to);
-        const matchesCategory = category === "all" || event.category === category;
-        return matchesYear && matchesCategory;
-      });
+    function sortedEventsWithIndex() {
+      return workingEvents
+        .map((event, index) => ({ event, index }))
+        .sort((a, b) => {
+          const aYear = yearNumber(a.event.year);
+          const bYear = yearNumber(b.event.year);
+          if (Number.isNaN(aYear) && Number.isNaN(bYear)) return a.index - b.index;
+          if (Number.isNaN(aYear)) return 1;
+          if (Number.isNaN(bYear)) return -1;
+          return aYear - bYear || a.index - b.index;
+        });
     }
 
     function render() {
-      const selected = activeTimeline();
-      const events = filteredEvents().sort((a, b) => yearNumber(a.year) - yearNumber(b.year));
+      const ordered = sortedEventsWithIndex();
+      timeline.innerHTML = "";
 
-      timeline.innerHTML = `
-        <div class="timeline-heading">
-          <div>
-            <h2>${selected.title}</h2>
-            <p>${selected.description}</p>
-          </div>
-          <span class="badge">${selected.period}</span>
+      const heading = document.createElement("div");
+      heading.className = "timeline-heading";
+      heading.innerHTML = `
+        <div>
+          <h2>${selectedTimeline.title}</h2>
+          <p>${selectedTimeline.description}</p>
         </div>
+        <span class="badge">${selectedTimeline.period}</span>
       `;
+      timeline.append(heading);
 
-      events.forEach((event) => {
-        const index = workingEvents.indexOf(event);
-        const item = document.createElement("article");
-        item.className = "event";
-
-        const yearInput = document.createElement("input");
-        yearInput.className = `year-field editable ${event.year ? "" : "empty-field"}`;
-        yearInput.value = event.year;
-        yearInput.setAttribute("aria-label", "Rok události");
-        yearInput.addEventListener("input", (inputEvent) => updateEvent(index, "year", inputEvent.target.value));
-
-        const card = document.createElement("div");
-        card.className = "event-card";
-
-        const titleInput = document.createElement("input");
-        titleInput.className = `event-title editable ${event.title ? "" : "empty-field"}`;
-        titleInput.value = event.title;
-        titleInput.placeholder = "Doplň název události";
-        titleInput.setAttribute("aria-label", "Název události");
-        titleInput.addEventListener("input", (inputEvent) => updateEvent(index, "title", inputEvent.target.value));
-
-        const noteInput = document.createElement("textarea");
-        noteInput.className = `event-note editable ${event.note ? "" : "empty-field"}`;
-        noteInput.value = event.note;
-        noteInput.placeholder = "Doplň vysvětlení";
-        noteInput.setAttribute("aria-label", "Popis události");
-        noteInput.addEventListener("input", (inputEvent) => updateEvent(index, "note", inputEvent.target.value));
-
-        const meta = document.createElement("div");
-        meta.className = "event-meta";
-        meta.textContent = event.category;
-
-        card.append(titleInput, noteInput, meta);
-        item.append(yearInput, card);
-        timeline.append(item);
+      ordered.forEach(({ event, index }, orderedIndex) => {
+        timeline.append(createEventElement(event, index));
+        if (orderedIndex < ordered.length - 1) timeline.append(createInsertRow(index + 1));
       });
 
-      if (events.length === 0) {
-        const empty = document.createElement("p");
-        empty.textContent = "Pro zadaný filtr nejsou v této časové ose žádné události.";
-        timeline.append(empty);
-      }
-
       renderExport();
+      updateHistoryButtons();
+    }
+
+    function createEventElement(event, index) {
+      const item = document.createElement("article");
+      item.className = "event";
+
+      const yearInput = document.createElement("input");
+      yearInput.className = `year-field editable ${event.year ? "" : "empty-field"}`;
+      yearInput.value = event.year;
+      yearInput.setAttribute("aria-label", "Rok události");
+      yearInput.addEventListener("focus", recordHistoryOnce);
+      yearInput.addEventListener("input", (inputEvent) => updateEvent(index, "year", inputEvent.target.value));
+
+      const card = document.createElement("div");
+      card.className = "event-card";
+
+      const titleInput = document.createElement("input");
+      titleInput.className = `event-title editable ${event.title ? "" : "empty-field"}`;
+      titleInput.value = event.title;
+      titleInput.placeholder = "Doplň název události";
+      titleInput.setAttribute("aria-label", "Název události");
+      titleInput.addEventListener("focus", recordHistoryOnce);
+      titleInput.addEventListener("input", (inputEvent) => updateEvent(index, "title", inputEvent.target.value));
+
+      const noteInput = document.createElement("textarea");
+      noteInput.className = `event-note editable ${event.note ? "" : "empty-field"}`;
+      noteInput.value = event.note;
+      noteInput.placeholder = "Doplň vysvětlení";
+      noteInput.setAttribute("aria-label", "Popis události");
+      noteInput.addEventListener("focus", recordHistoryOnce);
+      noteInput.addEventListener("input", (inputEvent) => updateEvent(index, "note", inputEvent.target.value));
+
+      const meta = document.createElement("div");
+      meta.className = "event-meta";
+      meta.textContent = event.category;
+
+      const actions = document.createElement("div");
+      actions.className = "event-actions";
+
+      const deleteButton = document.createElement("button");
+      deleteButton.className = "icon-button delete-button";
+      deleteButton.type = "button";
+      deleteButton.textContent = "-";
+      deleteButton.setAttribute("aria-label", "Odstranit událost");
+      deleteButton.addEventListener("click", () => deleteEvent(index));
+      actions.append(deleteButton);
+
+      card.append(titleInput, noteInput, meta);
+      item.append(yearInput, card, actions);
+      return item;
+    }
+
+    function createInsertRow(insertIndex) {
+      const row = document.createElement("div");
+      row.className = "insert-row";
+
+      const button = document.createElement("button");
+      button.className = "insert-button";
+      button.type = "button";
+      button.textContent = "+";
+      button.setAttribute("aria-label", "Vložit novou událost");
+      button.addEventListener("click", () => insertEvent(insertIndex));
+      row.append(button);
+      return row;
+    }
+
+    function recordHistoryOnce(event) {
+      if (event.target.dataset.historyOpen === "true") return;
+      event.target.dataset.historyOpen = "true";
+      recordHistory();
+      event.target.addEventListener("blur", () => {
+        event.target.dataset.historyOpen = "false";
+      }, { once: true });
     }
 
     function updateEvent(index, key, value) {
@@ -534,25 +549,54 @@
       renderExport();
     }
 
+    function insertEvent(index) {
+      recordHistory();
+      workingEvents.splice(index, 0, {
+        year: "",
+        title: "",
+        note: "",
+        category: selectedTimeline.category
+      });
+      render();
+    }
+
+    function deleteEvent(index) {
+      recordHistory();
+      workingEvents.splice(index, 1);
+      render();
+    }
+
+    function undo() {
+      if (undoStack.length === 0) return;
+      redoStack.push(snapshot());
+      restore(undoStack.pop());
+    }
+
+    function redo() {
+      if (redoStack.length === 0) return;
+      undoStack.push(snapshot());
+      restore(redoStack.pop());
+    }
+
+    function updateHistoryButtons() {
+      undoButton.disabled = undoStack.length === 0;
+      redoButton.disabled = redoStack.length === 0;
+    }
+
     function renderExport() {
-      exportText.textContent = workingEvents
-        .map((event) => `${event.year || "[rok]"} - ${event.title || "[událost]"}: ${event.note || "[vysvětlení]"} (${event.category})`)
+      exportText.textContent = sortedEventsWithIndex()
+        .map(({ event }) => `${event.year || "[rok]"} - ${event.title || "[událost]"}: ${event.note || "[vysvětlení]"} (${event.category})`)
         .join("\n");
     }
 
     function resetTimeline() {
-      workingEvents = cloneEvents(activeTimeline().events);
+      recordHistory();
+      workingEvents = cloneEvents(selectedTimeline.events);
       render();
     }
 
-    timelineSelect.addEventListener("change", () => {
-      activeTimelineId = timelineSelect.value;
-      resetTimeline();
-    });
-
-    categorySelect.addEventListener("change", render);
-    yearFrom.addEventListener("input", render);
-    yearTo.addEventListener("input", render);
+    undoButton.addEventListener("click", undo);
+    redoButton.addEventListener("click", redo);
     resetButton.addEventListener("click", resetTimeline);
 
     copyButton.addEventListener("click", async () => {
@@ -563,7 +607,6 @@
       }, 1200);
     });
 
-    populateSelects();
     render();
   </script>
 </body>

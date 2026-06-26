@@ -151,6 +151,37 @@ h1 {
   margin-top: 24px;
 }
 
+.class-filters {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 12px;
+  align-items: end;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  background: var(--panel);
+}
+
+.class-filters label {
+  display: grid;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.class-filters select,
+.class-filters input {
+  min-height: 40px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 0 10px;
+  color: var(--ink);
+  background: #fff;
+  font: inherit;
+}
+
 .class-card {
   color: inherit;
   text-align: left;
@@ -343,6 +374,10 @@ h1 {
   }
 
   .class-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .class-filters {
     grid-template-columns: 1fr;
   }
 }
