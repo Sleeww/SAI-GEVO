@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96" role="img" aria-label="SAI GEVO">
+  <defs>
+    <linearGradient id="mark-bg" x1="16" x2="82" y1="12" y2="86" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1F5F9F"/>
+      <stop offset="1" stop-color="#0E7A5F"/>
+    </linearGradient>
+  </defs>
+  <rect width="96" height="96" rx="22" fill="#182026"/>
+  <rect x="8" y="8" width="80" height="80" rx="18" fill="url(#mark-bg)"/>
+  <path d="M25 61c8 8 25 11 37 4 11-6 14-20 6-29-8-10-25-8-38 5" fill="none" stroke="#FFFFFF" stroke-width="7" stroke-linecap="round"/>
+  <path d="M31 42h28M41 27v42M58 30l11 38" fill="none" stroke="#CBEFE2" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="68" cy="28" r="5" fill="#F2C35B"/>
+</svg>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAI GEVO | Jednotná stránka</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./index.html" aria-label="SAI GEVO domů">
+      <img src="./graphics/sai-mark.svg" alt="" width="42" height="42">
+      <span>SAI GEVO</span>
+    </a>
+    <nav class="top-nav" aria-label="Hlavní navigace">
+      <a href="#projekty">Projekty</a>
+      <a href="../Knihovna nastroju/index.html">Knihovna</a>
+      <button class="theme-toggle" type="button" aria-label="Přepnout tmavý režim" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true"></span>
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Školní AI nástroje na jednom místě</p>
+        <h1 id="hero-title">Jednotná stránka pro prototypy SAI</h1>
+        <p>
+          Vstupní bod pro školní AI nástroje: mapa školy, pomůcky do hodin
+          a knihovna předmětových prototypů. Vše je navržené jako statický web,
+          který funguje i po přesunutí celé složky SAI na jiný počítač.
+        </p>
+        <div class="hero-actions">
+          <a class="button primary" href="#projekty">Zobrazit nástroje</a>
+          <a class="button classroom" href="../Knihovna nastroju/index.html">Knihovna předmětových nástrojů</a>
+        </div>
+      </div>
+      <div class="hero-panel" aria-label="Náhled portálu">
+        <div class="panel-top">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="portal-preview">
+          <div class="preview-row wide"></div>
+          <div class="preview-grid">
+            <div></div><div></div><div></div>
+          </div>
+          <div class="preview-map"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projekty" aria-labelledby="projekty-title">
+      <div class="section-heading">
+        <p class="eyebrow">Rozcestník</p>
+        <h2 id="projekty-title">Aktuální prototypy</h2>
+      </div>
+
+      <div class="tool-grid">
+        <!-- Relative links start from this index file and keep working after moving the whole SAI folder. -->
+        <article class="tool-card featured">
+          <div>
+            <p class="tag">3D mapa školy</p>
+            <h3>Interaktivní mapa školy</h3>
+            <p>
+              Koncept navigace po škole, hledání tříd a budoucího napojení
+              na rozvrh nebo NFC body.
+            </p>
+          </div>
+          <a class="card-link" href="../../3D mapa skoly/Interaktivni mapa skoly/index.html">Otevřít mapu</a>
+        </article>
+
+        <article class="tool-card">
+          <div>
+            <p class="tag">Nástroje do hodin</p>
+            <h3>Interaktivní časová osa</h3>
+            <p>
+              Jednosouborový nástroj pro skládání historických událostí,
+              poznámek a export do textové podoby.
+            </p>
+          </div>
+          <a class="card-link" href="../../Nastroje do hodin/Casova osa historie/casova-osa-historie.html">Otevřít nástroj</a>
+        </article>
+
+        <article class="tool-card library-card">
+          <div>
+            <p class="tag">Knihovna</p>
+            <h3>Předmětové nástroje</h3>
+            <p>
+              Stránka podobná navigaci Google Classroom: předměty, karty
+              nástrojů a rychlý vstup pro studenty.
+            </p>
+          </div>
+          <a class="card-link" href="../Knihovna nastroju/index.html">Otevřít knihovnu</a>
+        </article>
+
+        <article class="tool-card muted">
+          <div>
+            <p class="tag">Prototyp</p>
+            <h3>Zpracování nahrávek hodin</h3>
+            <p>
+              Místo pro budoucí web pro nahrání výkladu, AI poznámky
+              a materiály pro nepřítomné studenty.
+            </p>
+          </div>
+          <span class="status">Připraveno pro složku</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>SAI GEVO</span>
+    <a href="../Knihovna nastroju/index.html">Knihovna nástrojů</a>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

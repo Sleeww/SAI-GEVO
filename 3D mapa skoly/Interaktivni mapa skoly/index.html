@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SAI GEVO | Interaktivní mapa školy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <a href="../../Landing page/Jednotna stranka/index.html" class="back-link">← Jednotná stránka</a>
+    <h1>Interaktivní mapa školy</h1>
+    <p>První webový sketch pro navigaci, učebny a školní body zájmu.</p>
+  </header>
+
+  <main class="map-layout">
+    <aside class="control-panel" aria-label="Ovládání mapy">
+      <label for="floor-select">Patro</label>
+      <select id="floor-select">
+        <option value="0">Přízemí</option>
+        <option value="1">1. patro</option>
+        <option value="2">2. patro</option>
+      </select>
+
+      <label for="room-search">Vyhledat místnost</label>
+      <input id="room-search" type="search" placeholder="Např. 203, kabinet, aula">
+
+      <div class="room-list" id="room-list" aria-live="polite"></div>
+    </aside>
+
+    <section class="school-stage" aria-label="Schematická mapa školy">
+      <!-- This prototype uses HTML/CSS blocks now; the same file split can later host Three.js or exported graphics. -->
+      <div class="building" id="building"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
