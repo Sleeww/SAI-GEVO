@@ -1,4 +1,13 @@
 # SAI-GEVO
+## Generak
+Přihlašování do knihovny v demo:
+- username: ucitel.prijmeni
+    - password: ucitel.prijmeni
+- username: student1.prijmeni
+    - password: student1.prijmeni
+- username: student2.prijmeni
+    - password: student2.prijmeni   
+
 ## Interaktivní mapa
 - Import rozvrhu z edookitu
 - Navigace po škole
