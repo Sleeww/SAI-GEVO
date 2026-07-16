@@ -14,11 +14,31 @@
     </a>
     <nav aria-label="Knihovna">
       <a href="../Jednotna stranka/index.html">Portál</a>
-      <a href="../../Nastroje do hodin/Casova osa historie/casova-osa-historie.html">Časová osa</a>
+      <span class="user-chip" id="user-chip"></span>
+      <button class="sign-out" type="button" id="sign-out">Odhlásit</button>
+      <button class="theme-toggle" type="button" id="theme-toggle" aria-label="Přepnout tmavý režim" aria-pressed="false"><span class="theme-icon" aria-hidden="true"></span></button>
     </nav>
   </header>
 
-  <main class="classroom-shell">
+  <main class="login-shell" id="login-shell">
+    <section class="login-card" aria-labelledby="login-title">
+      <p class="eyebrow">Přihlášení</p>
+      <h1 id="login-title">Školní knihovna</h1>
+      <form id="login-form">
+        <label for="username">Uživatel</label>
+        <input id="username" name="username" autocomplete="username" required placeholder="ucitel.prijmeni">
+
+        <label for="password">Heslo</label>
+        <input id="password" name="password" autocomplete="current-password" required type="password">
+
+        <button type="submit">Přihlásit</button>
+        <p class="login-error" id="login-error" role="alert"></p>
+      </form>
+      <button class="factory-reset" type="button" id="factory-reset">Factory reset přiřazení</button>
+    </section>
+  </main>
+
+  <main class="classroom-shell" id="classroom-shell">
     <aside class="sidebar" aria-label="Předměty">
       <div id="subject-list"></div>
     </aside>
@@ -26,11 +46,13 @@
     <section class="content" aria-labelledby="library-title">
       <div class="hero-strip">
         <div>
-          <p class="eyebrow">Školní učebny</p>
+          <p class="eyebrow" id="library-eyebrow">Školní učebny</p>
           <h1 id="library-title">Moje předměty</h1>
         </div>
         <input id="tool-search" type="search" placeholder="Hledat předmět nebo nástroj">
       </div>
+
+      <div class="top-tabs" id="top-tabs" aria-label="Sekce knihovny"></div>
 
       <div class="view-tools">
         <button class="back-to-subjects" id="back-to-subjects" type="button">Všechny předměty</button>

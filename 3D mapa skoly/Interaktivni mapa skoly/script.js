@@ -14,8 +14,13 @@ const building = document.querySelector("#building");
 const floorSelect = document.querySelector("#floor-select");
 const searchInput = document.querySelector("#room-search");
 const roomList = document.querySelector("#room-list");
+const themeToggle = document.querySelector("#theme-toggle");
 
 let selectedRoomId = rooms[0].id;
+
+const storedTheme = localStorage.getItem("sai-theme");
+const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+setTheme(storedTheme || (prefersDark ? "dark" : "light"));
 
 function createMap() {
   ["0", "1", "2"].forEach((floorId) => {
@@ -97,6 +102,17 @@ floorSelect.addEventListener("change", () => {
 });
 
 searchInput.addEventListener("input", renderList);
+
+function setTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  localStorage.setItem("sai-theme", theme);
+  themeToggle?.setAttribute("aria-pressed", String(theme === "dark"));
+}
+
+themeToggle.addEventListener("click", () => {
+  const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  setTheme(nextTheme);
+});
 
 createMap();
 renderList();
