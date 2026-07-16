@@ -1,5 +1,5 @@
 # SAI-GEVO
-## Generak
+## General
 Přihlašování do knihovny v demo:
 - username: ucitel.prijmeni
     - password: ucitel.prijmeni
